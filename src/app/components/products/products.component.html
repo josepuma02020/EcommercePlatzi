@@ -1,7 +1,11 @@
+<button (click)="toogleProductDetail()">Abrir</button>
 <div class="products--grid">
-  <app-product
-    [product]="product"
-    *ngFor="let product of products"
-    (addedProduct)="onAddToShoppingCart($event)"
-  ></app-product>
+  <app-product [product]="product" *ngFor="let product of products" (addedProduct)="onAddToShoppingCart($event)"
+    (showProduct)="OnshowDetail($event)"></app-product>
+</div>
+<div class="product-detail" [class.active]="showProductDetail">
+  <div>
+    <button (click)="toogleProductDetail()">Close</button>
+    Contenido
+  </div>
 </div>
