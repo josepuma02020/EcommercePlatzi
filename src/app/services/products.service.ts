@@ -3,6 +3,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { retry } from 'rxjs/operators';
 
 import { Product, CreateProductDTO, UpdateProductDTO } from './../models/product.model';
+
+import { environment } from 'src/environments/environment';
+
 import { Thumbs } from 'swiper';
 
 @Injectable({
@@ -10,7 +13,7 @@ import { Thumbs } from 'swiper';
 })
 export class ProductsService {
 
-  private apiurl = '/api/products';
+  private apiurl = `${environment.API_URL}/api/products`;
 
   constructor(
     private http: HttpClient
