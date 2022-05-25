@@ -1,10 +1,12 @@
 <button (click)="createNewProduct()">Crear Producto</button>
+<button (click)="OnshowDetail('1212121212')">Detaller error</button>
 <div class="products--grid">
   <app-product [product]="product" *ngFor="let product of products" (addedProduct)="onAddToShoppingCart($event)"
     (showProduct)="OnshowDetail($event)"></app-product>
   <button (click)="LoadMore()">Cargar Mas</button>
 </div>
 <div class="product-detail" [class.active]="showProductDetail">
+  {{ statusDetail}}
   <div *ngIf="productChosen">
     <button (click)="toogleProductDetail()">Close</button>
     <h1>{{productChosen.title}}</h1>
