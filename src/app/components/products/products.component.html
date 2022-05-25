@@ -1,4 +1,4 @@
-<button (click)="toogleProductDetail()">Abrir</button>
+<button (click)="createNewProduct()">Crear Producto</button>
 <div class="products--grid">
   <app-product [product]="product" *ngFor="let product of products" (addedProduct)="onAddToShoppingCart($event)"
     (showProduct)="OnshowDetail($event)"></app-product>
@@ -13,5 +13,6 @@
       </ng-template>
     </swiper>
     <p>{{productChosen.description}}</p>
+    <button (click)="UpdateProduct()">Editar Product</button>
   </div>
 </div>
