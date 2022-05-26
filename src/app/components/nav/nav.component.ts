@@ -13,13 +13,11 @@ export class NavComponent implements OnInit {
 
   activeMenu = false;
   counter = 0;
-  token = '';
   profile: User | null = null;
 
   constructor(
     private storeService: StoreService,
     private AuthService: AuthService,
-    private UserService: UsersService,
   ) { }
 
   ngOnInit(): void {
@@ -32,28 +30,16 @@ export class NavComponent implements OnInit {
     this.activeMenu = !this.activeMenu;
   }
   login() {
-    this.AuthService.login('sebas@mail.com', '1212')
-      .subscribe(rta => {
-        this.token = rta.access_token;
-        console.log(this.token);
-        this.getProfile();
-      })
-  }
-  getProfile() {
-    this.AuthService.profile(this.token)
+    // this.AuthService.login('sebas@mail.com', '1212')
+    //   .subscribe(rta => {
+    //     this.token = rta.access_token;
+    //     console.log(this.token);
+    //     this.getProfile();
+    //   })
+    this.AuthService.loginAndGet('sebas@mail.com', '1212')
       .subscribe(user => {
-        console.log(user);
-        this.profile = user;
+        this.profile = user
       })
   }
-  createUser() {
-    this.UserService.create({
-      name: 'sebas',
-      email: 'sebas@mail.com',
-      password: '1212'
-    })
-      .subscribe(rta => {
-        console.log(rta);
-      })
-  }
+
 }

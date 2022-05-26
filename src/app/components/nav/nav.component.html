@@ -36,10 +36,10 @@
       </ul>
     </nav>
     <div class="info">
-      <button (click)="createUser()">Crear Usuario</button>
-      <button *ngIf="!token; else elseBlock" (click)="login()">Login</button>
-      <ng-template #elseBlock> {{profile?.email}}</ng-template>
-
+      <div class="account">
+        <button *ngIf="!profile; else elseBlock" (click)="login()">Login</button>
+        <ng-template #elseBlock> {{profile?.email}}</ng-template>
+      </div>
       <div class="cart">
         <a href="">
           <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
