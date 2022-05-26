@@ -1,4 +1,4 @@
-  <div class="show-mobile">
+<div class="show-mobile">
   <div>
     <button (click)="toggleMenu()">
       <img src="./assets/svg/icon_menu.svg" alt="menu">
@@ -36,7 +36,10 @@
       </ul>
     </nav>
     <div class="info">
-      <div class="account">nicolas@nicolas.com</div>
+      <button (click)="createUser()">Crear Usuario</button>
+      <button *ngIf="!token; else elseBlock" (click)="login()">Login</button>
+      <ng-template #elseBlock> {{profile?.email}}</ng-template>
+
       <div class="cart">
         <a href="">
           <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">

@@ -11,6 +11,7 @@ import { Product } from './models/product.model';
 export class AppComponent {
   imgParent = '';
   showImg = true;
+  token = '';
   constructor(
     private AuthService: AuthService,
     private UserService: UsersService,
@@ -26,20 +27,6 @@ export class AppComponent {
     this.showImg = !this.showImg;
   }
 
-  createUser() {
-    this.UserService.create({
-      name: 'sebas',
-      email: 'sebas@mail.com',
-      password: '1212'
-    })
-      .subscribe(rta => {
-        console.log(rta);
-      })
-  }
-  login() {
-    this.AuthService.login('sebas@mail.com', '1212')
-      .subscribe(rta => {
-        console.log(rta.access_token);
-      })
-  }
+
+
 }
