@@ -24,6 +24,7 @@ export class ProductsService {
       params = params.set('limit', limit);
       params = params.set('offset', limit);
     }
+    console.log("aqui");
     return this.http.get<Product[]>(this.apiurl, { params })
       .pipe(
         retry(3),
@@ -55,7 +56,16 @@ export class ProductsService {
   getProductsByPage(limit: number, offset: number) {
     return this.http.get<Product[]>(`${this.apiurl}`, {
       params: { limit, offset }
-    });
+    })
+      .pipe(
+        retry(3),
+        map(products => products.map(item => {
+          return {
+            ...item,
+            taxes: .19 * item.price
+          }
+        }))
+      );
   }
   create(dto: CreateProductDTO) {
     return this.http.post<Product>(this.apiurl, dto);
