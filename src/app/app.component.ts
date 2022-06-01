@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service'
 import { UsersService } from './services/users.service'
+import { FilesService } from './services/files.service'
 import { Product } from './models/product.model';
 
 @Component({
@@ -15,6 +16,7 @@ export class AppComponent {
   constructor(
     private AuthService: AuthService,
     private UserService: UsersService,
+    private fileService: FilesService,
   ) {
 
   }
@@ -26,7 +28,10 @@ export class AppComponent {
   toggleImg() {
     this.showImg = !this.showImg;
   }
-
+  downloadPDF() {
+    this.fileService.getFile('my.pdf', 'Https://young-sands-07814.herokuapp.com/api/files/dummy.pdf', 'aplication/pdf')
+      .subscribe()
+  }
 
 
 }

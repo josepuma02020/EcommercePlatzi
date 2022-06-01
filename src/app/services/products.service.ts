@@ -55,7 +55,7 @@ export class ProductsService {
   }
   getProductsByPage(limit: number, offset: number) {
     return this.http.get<Product[]>(`${this.apiurl}`, {
-      params: { limit, offset }, context: checkTime()
+      params: { limit, offset }, context: checkTime() 
     })
       .pipe(
         retry(3),
