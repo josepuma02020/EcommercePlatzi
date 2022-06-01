@@ -13,6 +13,7 @@ export class AppComponent {
   imgParent = '';
   showImg = true;
   token = '';
+  imgRta = '';
   constructor(
     private AuthService: AuthService,
     private UserService: UsersService,
@@ -32,6 +33,17 @@ export class AppComponent {
     this.fileService.getFile('my.pdf', 'Https://young-sands-07814.herokuapp.com/api/files/dummy.pdf', 'aplication/pdf')
       .subscribe()
   }
+  onUpload(event: Event) {
+    const element = event.target as HTMLInputElement;
+    const file = element.files?.item(0);
+    if (file) {
+      this.fileService.UploadFile(file)
+        .subscribe(rta => {
+          console.log(rta.location);
+          this.imgRta = rta.location;
+        })
+    }
 
+  }
 
 }
