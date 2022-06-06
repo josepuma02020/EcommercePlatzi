@@ -15,6 +15,11 @@ export class ProductsComponent {
 
   myShoppingCart: Product[] = [];
   total = 0;
+  @Input() set productId(id: string | null) {
+    if (id) {
+      this.OnshowDetail(id);
+    }
+  }
   @Input() products: Product[] = [];
   @Output() onloadmore: EventEmitter<string> = new EventEmitter<string>();
   showProductDetail = false;
@@ -31,6 +36,7 @@ export class ProductsComponent {
   };
   limit = 10;
   offset = 0;
+
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
   constructor(
     private storeService: StoreService,
@@ -38,9 +44,6 @@ export class ProductsComponent {
   ) {
     this.myShoppingCart = this.storeService.getShoppingCart();
   }
-
-
-
   onAddToShoppingCart(product: Product) {
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotal();
@@ -50,7 +53,10 @@ export class ProductsComponent {
   }
   OnshowDetail(id: string) {
     this.statusDetail = 'loading';
-    this.toogleProductDetail();
+    if (!this.showProductDetail) {
+      this.showProductDetail = true;
+      console.log(this.showProductDetail);
+    }
     this.productsService.getProduct(id)
       .subscribe(data => {
 
@@ -105,6 +111,6 @@ export class ProductsComponent {
   }
   LoadMore() {
     this.onloadmore.emit();
-   
+
   }
 }
