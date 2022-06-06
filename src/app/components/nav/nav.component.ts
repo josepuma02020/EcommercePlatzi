@@ -5,7 +5,6 @@ import { UsersService } from '../../services/users.service'
 import { StoreService } from '../../services/store.service'
 import { User } from '../../models/user.model'
 import { Category } from '../../models/category.model'
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-nav',
