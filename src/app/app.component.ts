@@ -22,6 +22,18 @@ export class AppComponent {
 
   }
 
+  createUser() {
+    this.UserService.create({
+      name: 'Jose',
+      email: 'jose@mail',
+      password: '1234',
+      role: 'customer'
+    })
+      .subscribe(rta => {
+        console.log(rta);
+      })
+  }
+
   onLoaded(img: string) {
     console.log('log padre', img);
   }
