@@ -28,7 +28,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllCategories();
-    this.authService.getprofile()
+    this.authService.myUser$
       .subscribe(data => {
         this.profile = data;
       })
@@ -56,7 +56,7 @@ export class NavComponent implements OnInit {
     //   })
     this.authService.loginAndGet('john@mail.com', 'changeme')
       .subscribe(user => {
-        this.profile = user
+        this.router.navigate(['/profile'])
       })
   }
   logout() {
