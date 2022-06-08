@@ -1,0 +1,7 @@
+[build]
+command = "ng build"
+publish = "dist/my-store-api"
+[[redirects]]
+from = "/*"
+status = 200
+to = "/index.html"
